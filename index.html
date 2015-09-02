@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#meuform').validate({
+                rules:{
+                    nome:{
+                        required:true,
+                        minlength:5
+                    },
+                    email:{
+                        required:true,
+                        email:true
+                    },
+                    site:{
+                        url:true
+                    },
+                    senha:{
+                        required:true,
+                        rangelength:[4,10]
+                    },
+                    senha2:{
+                        required:true,
+                        equalTo: "#senha"
+                    },
+                    contrato:{
+                        required:true
+                    }
+                },
+                messages:{
+                    nome:{
+                        required:"Este Campo é Obrigatório",
+                        minlength:"O nome deve ter no mínimo 5 caracteres"
+                    },
+                    email:{
+                        required:"Este Campo é Obrigatório",
+                        email:"Informe um email válido!"
+                    },
+                    site:{
+                        url:"Informe um site Válido.  Ex: http://site.com"
+                    },
+                    senha:{
+                        required:"Este Campo é Obrigatório.",
+                        rangelength:"Sua senha deve ter de 4 a 10 caracteres"
+                    },
+                    senha2:{
+                        required:"Este Campo é Obrigatório",
+                        equalTo: "as senhas diferem"
+                    },
+                    contrato:{
+                        required:"Você deve aceitar os termos e condições"
+                    }
+                }
+            });
+                
+        });
+    </script>
+    
+    <style>
+        label.error{color:#f00; font-weight: bold; padding: 0 5px;}
+    </style>
+    
+</head>
+<body>
+    <form action="" id="meuform" method="POST">
+        Nome: <br>
+        <input type="text" name="nome" id="nome" /><br>
+        Email: <br>
+        <input type="text" name="email"><br>
+        Site: <br>
+        <input type="text" name="site" value="http://"><br>
+        Senha: <br>
+        <input type="password" name="senha" id="senha"><br>
+        Repita a senha: <br>
+        <input type="password" name="senha2"><br>
+        Aceito os termos do contrato<input type="checkbox" name="contrato"><br/>
+        <input type="submit" value="Enviar">
+        
+    </form>
+</body>
+</html>
